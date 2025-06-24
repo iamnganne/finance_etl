@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd 
 import os 
 
-def clean_finance_data ():
+def transform_finance_data ():
     input_path = 'data/raw/yahoo_finance_data.csv'
     output_path = 'data/processed/yahoo_finance_data.csv'
     spark = SparkSession.builder.appName("CleanDataYahooFinance").getOrCreate()
@@ -30,4 +30,4 @@ def clean_finance_data ():
     spark.stop()
 
 if __name__=="__main__":
-    clean_finance_data()
+    transform_finance_data()
