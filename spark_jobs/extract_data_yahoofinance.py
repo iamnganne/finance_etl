@@ -1,6 +1,6 @@
 import yfinance as yf 
 import pandas as pd 
-import os 
+import os     
 from datetime import date, datetime 
 import yfinance.shared
 yfinance.shared._DEFAULT_USER_AGENT = "Mozilla/5.0"
