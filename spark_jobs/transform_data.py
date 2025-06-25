@@ -6,6 +6,7 @@ from pyspark.sql.functions import last, lag, log,avg
 import numpy as np 
 import pandas as pd 
 import os 
+import shutil
 
 def create_spark():
     return SparkSession.builder.appName("Transform_Finance_Data").getOrCreate()
@@ -56,8 +57,14 @@ def transform_finance_data():
     df = calculate_log_return(df)
     df = calculate_moving_average(df)
     df = calculate_rate_of_change(df,n=5)   
-    df.write.mode("overwrite").csv(output_path,header=True)
+    df.write.mode("overwrite").csv(output_path,header=True) 
     spark.stop()
 
 if __name__=="__main__":
     transform_finance_data()
+    input_dir = "data/processed/yahoo_finance_data.csv"
+    output_file = "data/processed/yahoo_finance_data_final.csv"
+    for file in os.listdir(input_dir):
+        if file.endswith(".csv"):
+            shutil.move(os.path.join(input_dir,file), output_file)
+            break
