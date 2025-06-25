@@ -53,9 +53,9 @@ def transform_finance_data():
     spark = create_spark()
     df = read_data(spark,input_path)
     df = clean_finance_data(df)
-    df = calculate_rate_of_change(df,n=5)
+    df = calculate_rate_of_change(df,n=5)   
     df.write.mode("overwrite").csv(output_path,header=True)
     spark.stop()
-    
+
 if __name__=="__main__":
     transform_finance_data()
