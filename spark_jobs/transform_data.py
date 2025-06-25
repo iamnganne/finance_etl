@@ -38,13 +38,13 @@ def calculate_log_return (df):
 
 def calculate_moving_average (df,window_size = 7):
     window_spec = Window.partitionBy("Ticker").orderBy("Date").rowsBetween(-(window_size -1),0)
-    df = df.withColumn(f"MA_{window_size}", avg("Close").over(window_spec))
+    df = df.withColumn(f"MA", avg("Close").over(window_spec))
     return df 
 
 def calculate_rate_of_change(df, n = 5):
     window_spec = Window.partitionBy("Ticker").orderBy("Date")
     prev_close = lag("Close",n).over(window_spec)
-    df = df.withColumn(f"roc_{n}",(((col("Close") -prev_close)/prev_close))*100)
+    df = df.withColumn(f"ROC",(((col("Close") -prev_close)/prev_close))*100)
     return df
 
 def transform_finance_data():
@@ -53,6 +53,8 @@ def transform_finance_data():
     spark = create_spark()
     df = read_data(spark,input_path)
     df = clean_finance_data(df)
+    df = calculate_log_return(df)
+    df = calculate_moving_average(df)
     df = calculate_rate_of_change(df,n=5)   
     df.write.mode("overwrite").csv(output_path,header=True)
     spark.stop()
