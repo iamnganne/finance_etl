@@ -47,4 +47,4 @@ This project aim to buil ETL Pipline include:
     Username: airflow
     Password: airflow
    ```
-. Run pipeline manually
+4. Run pipeline manually
