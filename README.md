@@ -1,5 +1,6 @@
 # Build Finance ETL Pipeline with Pyspark, Airflow 
 ## Features
+This project aim to buil ETL Pipline include: 
 - Extract stock data from Yahoo Finance
 - Transform data (using Pyspark): clean missing value, calculate log returns, moving average, ...
 - Load cleaned data into PostgreSQL databse
