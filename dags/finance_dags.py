@@ -15,8 +15,8 @@ with DAG(
     default_args = default_args,
     description='ETL pipeline for financial data using PySpark and PostgreSQL',
     schedule_interval='@daily',
-    start_date = datetime(2024,1,1)
-    tag = ['finance','etl','spark'],
+    start_date = datetime(2024,1,1),
+    tags = ['finance','etl','spark'],
 ) as dag:
 
     extract_task = SparkSubmitOperator (
