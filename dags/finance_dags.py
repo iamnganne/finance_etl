@@ -9,6 +9,7 @@ default_args = {
     'retries': 2,
     'retry_delay': timedelta(minutes = 2)
 }
+
 with DAG( 
     dag_id = "finance_etle_pipeline",
     default_args = default_args,
@@ -17,6 +18,7 @@ with DAG(
     start_date = datetime(2024,1,1)
     tag = ['finance','etl','spark'],
 ) as dag:
+
     extract_task = SparkSubmitOperator (
         task_id = 'extract_data_yahoofinance',
         application = "/opt/airflow/spark_jobs/extract_data.py",
@@ -24,6 +26,7 @@ with DAG(
         verbose = False,
         name = "extract_data_yahoofinance"
     )
+
     transform_task = SparkSubmitOperator (
         task_id = 'tranform_data',
         application = "/opt/airflow/spark_jobs/transform_data.py",
@@ -39,5 +42,4 @@ with DAG(
         verbose = False,
         name = "load_data"
     )
-
     extract_task >> transform_task >> load_task
