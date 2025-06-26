@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-import findspark 
+
 def load_finance_data():
         spark = SparkSession.builder.appName("Load_Finance_Data")\
                     .config("spark.jars","file:///D:/finance_etl/jars/postgresql-42.2.27.jar")\
