@@ -41,8 +41,10 @@ This project aim to buil ETL Pipline include:
   docker-compose up -d
   ```
 3. Access Airflow
+```bash
    URL: http://localhost:8080
    Default login:
     Username: airflow
     Password: airflow
+   ```
 . Run pipeline manually
