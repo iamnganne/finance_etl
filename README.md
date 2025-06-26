@@ -7,18 +7,20 @@
 - Fully containerized with Docker
 ## Project Structure 
           finance-etl-pipeline/
-          ├── dags/ ← Airflow DAG definitions
-          ├── spark_jobs/ ← Modular ETL pipeline
-          │ ├── extract_data/ ← Data extraction logic
-          │ ├── transform_data/ ← Data transformation with PySpark
-          │ └── load_data/ ← Load logic into PostgreSQL
-          ├── config/ ← Config files (DB, API, Airflow)
-          ├── scripts/ ← Wrapper scripts (for Airflow)
-          ├── data/ ← Raw and processed data
-          ├── tests/ ← Unit tests for ETL
-          ├── requirements.txt ← Python dependencies
-          ├── docker-compose.yml ← Docker setup for Airflow + PostgreSQL
-          └── README.md ← Project overview
+          ├── dags/ 
+          ├── spark_jobs/
+          │ ├── extract_data/ 
+          │ ├── transform_data/ 
+          │ └── load_data/ 
+          ├── config/ 
+          ├── scripts/ 
+          ├── data/ 
+          │ ├── raw/ 
+          │ ├── processed/ 
+          ├── tests/ 
+          ├── requirements.txt 
+          ├── docker-compose.yml
+          └── README.md 
 ## Technology 
 - Pyspark
 - Apache Airflow
@@ -38,8 +40,8 @@
   docker-compose up -d
   ```
 3. Access Airflow
-  URL: http://localhost:8080
-  Default login:
+   URL: http://localhost:8080
+   Default login:
     Username: airflow
     Password: airflow
 . Run pipeline manually
