@@ -10,7 +10,7 @@ def load_finance_data():
                 .option("user","airflow")\
                 .option("password","airflow")\
                 .option("driver", "org.postgresql.Driver")\ 
-                .mode("overwrite").save() 
+                .mode("overwrite").save()    
         spark.stop()
 if __name__ == "__main__":
     load_finance_data()
