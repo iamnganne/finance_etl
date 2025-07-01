@@ -18,7 +18,6 @@ This project aim to buil ETL Pipline include:
           ├── data/ 
           │ ├── raw/ 
           │ ├── processed/ 
-          ├── tests/ 
           ├── requirements.txt 
           ├── docker-compose.yml
           └── README.md 
