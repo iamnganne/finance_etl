@@ -9,7 +9,7 @@ def load_finance_data():
                 .option("dbtable","finance")\
                 .option("user","airflow")\
                 .option("password","airflow")\
-                .option("driver", "org.postgresql.Driver")\ 
+                .option("driver", "org.postgresql.Driver")\
                 .mode("overwrite").save()      
         spark.stop()
 if __name__ == "__main__":
